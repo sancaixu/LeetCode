@@ -72,66 +72,36 @@ class Solution {
         
         var result: ListNode?
         var cn = 0
-        var listNode1 = l1
-        var listNode2 = l2
-        while listNode1 != nil || listNode2 != nil {
+  
+        if  l1 != nil || l2 != nil {
             
-            let value1 = (l1 != nil) ? l1!.val : 0 + cn
-            
+            let value1 = (l1 != nil) ? l1!.val : 0
             let value2 = (l2 != nil) ? l2!.val : 0
-            
+            print("cn = \(value1) + \(value2)")
+
             let sum = value1 + value2
             
             cn = sum/10
-            if result == nil {
-           
-                result = ListNode(val: sum%10)
             
+            result = ListNode(val: sum%10)
+            
+        
+
+            if (cn == 0){
+            
+                result?.next = addTwoNumbers(l1?.next, l2: l2?.next)
+                
             }else {
                 
-                result?.next  = ListNode(val: sum%10)
+                let listNode = ListNode(val: cn)
+                let value = ((l1?.next != nil) ? (l1?.next!.val)! : 0)
+                listNode.val += value
+                listNode.next = l1?.next?.next
+                result?.next = addTwoNumbers(listNode, l2: l2?.next)
                 
-                result = result?.next
-        
-            }
-            if listNode1 != nil {
-                listNode1 = listNode1?.next
-            }
-            if  listNode2 != nil {
-                listNode2 = listNode2?.next
             }
 
         }
-     
-//        if  l1 != nil || l2 != nil {
-//            
-//            let value1 = (l1 != nil) ? l1!.val : 0
-//            let value2 = (l2 != nil) ? l2!.val : 0
-//            print("cn = \(value1) + \(value2)")
-//
-//            let sum = value1 + value2
-//            
-//            cn = sum/10
-//            
-//            result = ListNode(val: sum%10)
-//            
-//        
-//
-//            if (cn == 0){
-//            
-//                result?.next = addTwoNumbers(l1?.next, l2: l2?.next)
-//            
-//            }else {
-//                
-//                let listNode = ListNode(val: cn)
-//                let value = ((l1?.next != nil) ? (l1?.next!.val)! : 0)
-//                listNode.val += value
-//                listNode.next = l1?.next?.next
-//                result?.next = addTwoNumbers(listNode, l2: l2?.next)
-//                
-//            }
-//
-//        }
         
         
         

@@ -2,7 +2,6 @@
 
 import UIKit
 
-var str = "Hello, playground"
 
 func towSumProblem(nums: [Int], _ target: Int) -> [Int]? {
 
